@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>I.H.O</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;700&family=Manrope:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--void:#040a22;--royal:#0f2f9e;--sapphire:#2f6bff;--ice:#c3d7ff;--gold:#e8c872;--glass:rgba(120,160,255,.12);--edge:rgba(170,200,255,.28);
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:inherit;margin:0}
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{min-height:100%;color:#eaf1ff;font-family:Manrope,system-ui,sans-serif;background:linear-gradient(140deg,#040a22,#0a2276,#0f2f9e,#06175a,#040a22);background-size:400% 400%;background-attachment:fixed;animation:drift 24s ease-in-out infinite}
+@keyframes drift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+background:
+radial-gradient(ellipse 70% 45% at 88% -6%,rgba(120,175,255,.34),transparent 70%),
+radial-gradient(ellipse 60% 40% at 0% 100%,rgba(47,107,255,.22),transparent 70%),
+repeating-conic-gradient(from 196deg at 92% -8%,rgba(170,205,255,.15) 0 1.6deg,transparent 1.6deg 8deg);
+-webkit-mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.55) 55%,rgba(0,0,0,.25) 100%);mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.55) 55%,rgba(0,0,0,.25) 100%);
+animation:beam 18s ease-in-out infinite alternate}
+@keyframes beam{from{opacity:.65;transform:translateX(-2%)}to{opacity:1;transform:translateX(2%)}}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+background:
+repeating-linear-gradient(118deg,rgba(190,215,255,.05) 0 1px,transparent 1px 28px),
+repeating-linear-gradient(28deg,rgba(232,200,114,.035) 0 1px,transparent 1px 90px),
+radial-gradient(ellipse at 50% 50%,transparent 45%,rgba(2,6,24,.55) 100%)}
+.wm{position:fixed;left:50%;top:52%;transform:translate(-50%,-50%) rotate(-14deg);font-family:Fraunces,Georgia,serif;font-weight:700;font-size:min(46vw,240px);letter-spacing:.12em;color:transparent;-webkit-text-stroke:1px rgba(190,215,255,.09);pointer-events:none;z-index:0;white-space:nowrap;user-select:none}
+.app{position:relative;z-index:1;max-width:520px;margin:0 auto;padding:22px 18px 40px}
+.brand{font-family:Fraunces,Georgia,serif;font-weight:700;font-size:34px;letter-spacing:.14em;color:#fff}
+.brand span{color:var(--gold)}
+.clock{margin-top:14px;padding:18px 20px;border-radius:24px;background:var(--glass);border:1px solid var(--edge);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.time{font-family:Fraunces,Georgia,serif;font-size:44px;font-weight:500;font-variant-numeric:tabular-nums}
+.time small{font-size:18px;color:var(--gold);margin-left:6px}
+.date{color:var(--ice);font-size:14px;margin-top:2px}
+.hello{margin:22px 4px 12px;font-size:18px;color:var(--ice)}
+.doors{display:grid;gap:14px}
+.door{display:flex;align-items:center;gap:16px;width:100%;text-align:left;color:inherit;font:inherit;cursor:pointer;padding:22px 20px;border-radius:26px;background:linear-gradient(135deg,rgba(47,107,255,.28),rgba(15,47,158,.16));border:1px solid var(--edge);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:0 12px 40px rgba(2,8,40,.5),inset 0 1px 0 rgba(255,255,255,.14);transition:transform .2s,border-color .2s}
+.door:active{transform:scale(.98)}
+.door:hover,.door:focus-visible{border-color:var(--gold);outline:none}
+.door .ic{font-size:34px;width:60px;height:60px;display:grid;place-items:center;border-radius:18px;background:rgba(255,255,255,.08)}
+.door b{display:block;font-family:Fraunces,Georgia,serif;font-size:24px}
+.door em{font-style:normal;color:var(--ice);font-size:14px}
+.room{display:none}
+.room.on{display:block;animation:open .35s ease-out}
+@keyframes open{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:none}}
+.top{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.back{border:1px solid var(--edge);background:var(--glass);color:#fff;border-radius:14px;padding:10px 14px;font:inherit;cursor:pointer}
+.top h2{font-family:Fraunces,Georgia,serif;font-size:28px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.tile{aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:8px;color:inherit;font:inherit;font-size:12.5px;text-align:center;cursor:pointer;border-radius:22px;background:var(--glass);border:1px solid var(--edge);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.tile i{font-style:normal;font-size:30px}
+.tile:active{transform:scale(.95)}
+.tile:focus-visible{outline:2px solid var(--gold)}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,30px);opacity:0;background:#0b1d63;border:1px solid var(--gold);padding:12px 18px;border-radius:16px;font-size:14px;transition:.3s;pointer-events:none;max-width:88%;text-align:center}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+@media (prefers-reduced-motion:reduce){body,body::before{animation:none}.room.on{animation:none}}
+</style>
+</head>
+<body>
+<div class="wm" aria-hidden="true">I.H.O</div>
+<main class="app">
+  <div class="brand">I.H<span>.</span>O</div>
+  <section class="clock" aria-live="off">
+    <div class="time" id="t">--:--:--</div>
+    <div class="date" id="d"></div>
+  </section>
+
+  <section id="home">
+    <p class="hello" id="hi"></p>
+    <div class="doors" id="doors"></div>
+  </section>
+
+  <section class="room" id="room">
+    <div class="top"><button class="back" id="back">Back</button><h2 id="rt"></h2></div>
+    <div class="grid" id="grid"></div>
+  </section>
+</main>
+<div class="toast" id="toast"></div>
+
+<script>
+const ROOMS=[
+ {k:"acad",ic:"🎓",n:"Academics",s:"Learn, practise, excel",tiles:[["🏛️","My University"],["👨‍🏫","My Lecturers"],["🧪","Living Lab"],["🔬","World Science Library"],["🩺","Medical Library"],["💡","Curiosity Zone"],["💻","Tech Zone"],["📝","Exams & CBT"],["📈","Progress"],["🔔","Alerts"],["🗓️","Timetable"],["🏆","Awards"]]},
+ {k:"deen",ic:"🕌",n:"Deen",s:"Faith, knowledge, character",tiles:[["📖","Qur'an"],["🕋","Prayer Times"],["🔤","Arabic"],["📚","Islamic Studies"],["📿","Daily Adhkar"],["🌙","Jumu'ah"],["🧭","Qibla"],["📈","Progress"],["🔔","Alerts"]]},
+ {k:"dream",ic:"🚀",n:"Dream",s:"Vision, goals, legacy",tiles:[["🎯","Goals"],["🗺️","Roadmap"],["📓","Journal"],["🧠","Skills"],["💼","Projects"],["💰","Wealth Plan"],["📈","Progress"],["🔔","Alerts"]]}
+];
+const $=id=>document.getElementById(id);
+const tz="Africa/Lagos";
+function tick(){
+  const n=new Date();
+  const t=new Intl.DateTimeFormat("en-NG",{timeZone:tz,hour:"2-digit",minute:"2-digit",second:"2-digit",hour12:true}).format(n);
+  const m=t.match(/^(.*?)\s?([ap]m)$/i);
+  $("t").innerHTML=(m?m[1]:t)+"<small>"+(m?m[2].toUpperCase():"")+" WAT</small>";
+  $("d").textContent=new Intl.DateTimeFormat("en-NG",{timeZone:tz,weekday:"long",day:"numeric",month:"long",year:"numeric"}).format(n)+" · Nigeria";
+  const h=+new Intl.DateTimeFormat("en-GB",{timeZone:tz,hour:"numeric",hour12:false}).format(n)%24;
+  $("hi").textContent=(h<12?"Good morning":h<17?"Good afternoon":"Good evening")+", Ibrahim. Choose a door.";
+}
+tick();setInterval(tick,1000);
+let tt;function toast(x){const e=$("toast");e.textContent=x;e.classList.add("on");clearTimeout(tt);tt=setTimeout(()=>e.classList.remove("on"),2200)}
+$("doors").innerHTML=ROOMS.map(r=>`<button class="door" data-k="${r.k}"><span class="ic">${r.ic}</span><span><b>${r.n}</b><em>${r.s}</em></span></button>`).join("");
+$("doors").onclick=e=>{const b=e.target.closest(".door");if(!b)return;const r=ROOMS.find(x=>x.k===b.dataset.k);
+  $("rt").textContent=r.n;
+  $("grid").innerHTML=r.tiles.map(t=>`<button class="tile" data-n="${t[1]}"><i>${t[0]}</i>${t[1]}</button>`).join("");
+  $("home").style.display="none";$("room").classList.add("on");window.scrollTo(0,0)};
+$("grid").onclick=e=>{const b=e.target.closest(".tile");if(b)toast(b.dataset.n+" is next on the build list")};
+$("back").onclick=()=>{$("room").classList.remove("on");$("home").style.display="block"};
+</script>
+</body>
+</html>
